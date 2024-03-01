@@ -11,8 +11,21 @@ config_version=5
 [application]
 
 config/name="Flexarions Adventure"
+run/main_scene="res://Scenes/StartScreen.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
+run/size/mode=0
+
+[autoload]
+
+Audio="*res://LogicNodes/audio.tscn"
+Globals="*res://autoload/globals.gd"
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/size/mode=4
 
 [editor]
 

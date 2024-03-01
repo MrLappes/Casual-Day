@@ -1,0 +1,189 @@
+[gd_scene load_steps=15 format=3 uid="uid://oe1mlkcpt13x"]
+
+[ext_resource type="Script" path="res://scripts/menu/menu.gd" id="1_fgxh2"]
+[ext_resource type="Texture2D" uid="uid://db106rm4bsqck" path="res://sprites/player/bodypixl.png" id="2_awvyc"]
+[ext_resource type="PackedScene" uid="uid://b2v2dmnitkmfa" path="res://LogicNodes/menu_logic/options.tscn" id="3_u1ayx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mtphv"]
+atlas = ExtResource("2_awvyc")
+region = Rect2(0, 560, 70, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dv8f3"]
+atlas = ExtResource("2_awvyc")
+region = Rect2(70, 560, 70, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_al6hu"]
+atlas = ExtResource("2_awvyc")
+region = Rect2(140, 560, 70, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_stsh6"]
+atlas = ExtResource("2_awvyc")
+region = Rect2(210, 560, 70, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_85ea1"]
+atlas = ExtResource("2_awvyc")
+region = Rect2(280, 560, 70, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_45y5e"]
+atlas = ExtResource("2_awvyc")
+region = Rect2(0, 490, 70, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e1i5v"]
+atlas = ExtResource("2_awvyc")
+region = Rect2(70, 490, 70, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w71rd"]
+atlas = ExtResource("2_awvyc")
+region = Rect2(140, 490, 70, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fuypr"]
+atlas = ExtResource("2_awvyc")
+region = Rect2(210, 490, 70, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ew0av"]
+atlas = ExtResource("2_awvyc")
+region = Rect2(280, 490, 70, 70)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pn1y6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mtphv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dv8f3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_al6hu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_stsh6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_85ea1")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_45y5e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e1i5v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w71rd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fuypr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ew0av")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fgxh2")
+
+[node name="MenuButtons" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Endposition" type="Control" parent="MenuButtons"]
+layout_mode = 2
+anchors_preset = 0
+offset_left = 657.0
+offset_top = 842.0
+offset_right = 657.0
+offset_bottom = 842.0
+size_flags_horizontal = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuButtons"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 70.0
+offset_top = -422.0
+offset_right = 300.0
+offset_bottom = -163.0
+grow_vertical = 0
+scale = Vector2(1.5, 1.5)
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="StartButton" type="Button" parent="MenuButtons/VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../QuitButton")
+theme_override_font_sizes/font_size = 20
+text = "Strip"
+
+[node name="OptionButton" type="Button" parent="MenuButtons/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Think"
+
+[node name="CreditsButton" type="Button" parent="MenuButtons/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Punch"
+
+[node name="QuitButton" type="Button" parent="MenuButtons/VBoxContainer"]
+layout_mode = 2
+focus_neighbor_bottom = NodePath("../StartButton")
+theme_override_font_sizes/font_size = 20
+text = "Ignore"
+
+[node name="title" type="Label" parent="MenuButtons"]
+layout_mode = 1
+offset_left = 80.0
+offset_top = 44.0
+offset_right = 1290.0
+offset_bottom = 181.0
+theme_override_font_sizes/font_size = 100
+text = "Flexarions Adventure
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="title2" type="Label" parent="MenuButtons"]
+layout_mode = 1
+offset_left = 87.0
+offset_top = 163.0
+offset_right = 1297.0
+offset_bottom = 300.0
+theme_override_font_sizes/font_size = 40
+text = "How will you react"
+
+[node name="Options" parent="MenuButtons" instance=ExtResource("3_u1ayx")]
+visible = false
+layout_mode = 1
+offset_left = 545.0
+offset_top = 186.0
+
+[node name="Player" type="AnimatedSprite2D" parent="."]
+position = Vector2(-220, 819)
+scale = Vector2(4.55715, 4.55715)
+sprite_frames = SubResource("SpriteFrames_pn1y6")
+autoplay = "Walk"
+
+[connection signal="pressed" from="MenuButtons/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="MenuButtons/VBoxContainer/OptionButton" to="." method="_on_option_button_pressed"]
+[connection signal="pressed" from="MenuButtons/VBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
+[connection signal="pressed" from="MenuButtons/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

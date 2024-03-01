@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dwsql3oytyy5i"]
+
+[ext_resource type="Script" path="res://autoload/Music_Handler.gd" id="1_x8cfu"]
+
+[node name="Audio" type="Node"]
+script = ExtResource("1_x8cfu")
+
+[node name="MusicStreamPlayer" type="AudioStreamPlayer" parent="."]
+mix_target = 1
+bus = &"Music"
