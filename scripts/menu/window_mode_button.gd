@@ -1,5 +1,12 @@
 extends Control
+"""
+This Script was written by MrLappes for the Acerola Game Jam #0
+https://itch.io/jam/acerola-jam-0
 
+This script controlls the adding of the different Window modes.
+Taken from this tutorial:
+	https://www.youtube.com/watch?v=fFIST_4wmyI&ab_channel=CoffeeCrow
+"""
 @onready var option_button = $HBoxContainer/OptionButton as OptionButton
 
 const WINDOW_MODE_ARRAY : Array[String] = [

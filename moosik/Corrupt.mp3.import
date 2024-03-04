@@ -12,8 +12,8 @@ dest_files=["res://.godot/imported/Corrupt.mp3-dd76ee5c0f765f195a5a4f68325a6f47.
 
 [params]
 
-loop=false
-loop_offset=0
-bpm=0
+loop=true
+loop_offset=0.0
+bpm=0.0
 beat_count=0
 bar_beats=4

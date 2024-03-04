@@ -1,12 +1,7 @@
 extends Control
 
-@onready var options_menu = $Options as OptionsMenu
+@onready var options_menu = $Options as Control
 @onready var pause_menu = $".." as Container
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
 
 
 func _on_start_button_pressed():
