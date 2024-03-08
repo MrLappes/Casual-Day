@@ -34,7 +34,7 @@ var intro_finished : bool = false
 
 func _ready():
 	# Play global audio
-	Audio.play_moosic("Main Song")
+	Audio.play_moosic("Main Menu Song")
 	# Menu is invisible whilst walking in
 	toggleMenuVisibility(false)
 	# Useful for game restarts
@@ -79,11 +79,13 @@ func _on_option_button_pressed():
 func _on_credits_button_pressed():
 	move_eyes_timer.stop()
 	toggleMenuVisibility(false)
+	$AnimationPlayer.play("hide_girl")
 	robber.play("shoot")
 	await wait(2.0)
 	death_label.visible = true
 	player.play("death")
 	await wait(5.0)
+	girl.material.set("shader_parameter/darkening_factor", 0)
 	get_tree().change_scene_to_file("res://Scenes/StartScreen.tscn")
 
 # Close Game

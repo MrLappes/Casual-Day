@@ -1,6 +1,88 @@
-[gd_scene load_steps=2 format=3 uid="uid://dwsql3oytyy5i"]
+[gd_scene load_steps=6 format=3 uid="uid://dwsql3oytyy5i"]
 
 [ext_resource type="Script" path="res://autoload/Music_Handler.gd" id="1_x8cfu"]
+
+[sub_resource type="Animation" id="Animation_pdaal"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MusicStreamPlayer:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_nbpt4"]
+resource_name = "battle_fade"
+length = 22.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MusicStreamPlayer:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 13.5, 20, 22),
+"transitions": PackedFloat32Array(1, 1, 8.28212, 0.287175),
+"update": 0,
+"values": [0.0, 0.0, -30.0, 0.0]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(20),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"switch_to_main_theme_no_anim"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_ugwkm"]
+resource_name = "switch_songs"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MusicStreamPlayer:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.251069, 0.5),
+"transitions": PackedFloat32Array(1, 4.75683, 2.63902),
+"update": 0,
+"values": [0.0, -80.0, 0.0]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"transition_state"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k03tm"]
+_data = {
+"RESET": SubResource("Animation_pdaal"),
+"battle_fade": SubResource("Animation_nbpt4"),
+"switch_songs": SubResource("Animation_ugwkm")
+}
 
 [node name="Audio" type="Node"]
 script = ExtResource("1_x8cfu")
@@ -8,3 +90,10 @@ script = ExtResource("1_x8cfu")
 [node name="MusicStreamPlayer" type="AudioStreamPlayer" parent="."]
 mix_target = 1
 bus = &"Music"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_k03tm")
+}
+
+[connection signal="finished" from="MusicStreamPlayer" to="." method="_on_music_stream_player_finished"]
