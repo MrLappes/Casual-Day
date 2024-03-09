@@ -9,6 +9,7 @@ Reset function is used for when you restart the game as this is autoloaded
 We dont want the player to keep his progress.
 """
 signal level_changed
+signal xp_changed
 # Character States
 var tutorial : bool = true
 var dead : bool = false
@@ -59,7 +60,7 @@ func reset_globals() -> void:
 	player_aerial_walk_speed = 180.0
 	player_jump_velocity = 400.0
 	max_self_awareness_level = 100
-	max_global_progress_level = 100
+	max_global_progress_level = int(pow((max_level / 0.3), 2)) + 10
 	self_awareness_modifier = -2.0 # Will be removed each process multiplied by delta
 	self_awareness_clothes_on_modifier = -1.0 # Will be removed each process multiplied by delta if he has clothes on
 	posing_self_awareness_modifier = 2.0
@@ -73,11 +74,13 @@ func get_self_awareness_modifier(is_clothed : bool, nearby_enemy_modifier : floa
 		return posing_self_awareness_modifier + nearby_enemy_modifier
 	return self_awareness_clothes_on_modifier if is_clothed else self_awareness_modifier + nearby_enemy_modifier
 		
-func add_exp(value : int) -> void:
+func add_xp(value : int) -> void:
 	xp += value
-	if xp > level_up_xp and level < max_level:
-		xp = xp - level_up_xp
+	while xp >= level_up_xp and level < max_level:
+		# formula from https://blog.jakelee.co.uk/converting-levels-into-xp-vice-versa/
 		level += 1
+		level_up_xp = int(pow((level / 0.3), 2)) + 10
 		level_changed.emit(level)
+	xp_changed.emit(xp)
 		
 	
