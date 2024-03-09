@@ -59,6 +59,8 @@ func toggleMenuVisibility(turn_visible : bool) -> void:
 
 # Get rid of clothes and start game
 func _on_start_button_pressed():
+	# works but probably would have been nicer 
+	# with animationplayer on finished logic
 	toggleMenuVisibility(false)
 	await wait(0.5)
 	player.play("strip")
@@ -94,10 +96,12 @@ func _on_quit_button_pressed():
 	
 
 func _on_scroll_phone_timer_timeout():
+	# Girl randomly scrolls her phone
 	girl.play("scroll")
 	scroll_phone_timer.wait_time = randf_range(1.2, 10.0)
 
 
 func _on_move_eyes_timer_timeout():
+	# Robber randomly looks at you
 	robber.play("move_eyes")
 	move_eyes_timer.wait_time = randf_range(2.0,14.0)

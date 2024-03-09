@@ -1,5 +1,11 @@
 extends Control
 
+"""
+This Script was written by MrLappes for the Acerola Game Jam #0
+https://itch.io/jam/acerola-jam-0
+Shows Menu, game isnt actually paused though, for now. (except the player)
+"""
+
 @onready var options_menu = $Options as Control
 @onready var pause_menu = $".." as Container
 

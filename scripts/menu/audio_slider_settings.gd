@@ -1,5 +1,13 @@
 extends Control
 
+"""
+This Script was written by MrLappes for the Acerola Game Jam #0
+https://itch.io/jam/acerola-jam-0
+
+Logic for audio sliders. This was also taken from the tutorial series
+I linked in another script.
+"""
+
 @onready var audio_name_lbl = $HBoxContainer/Audio_Name_Lbl as Label
 @onready var audio_num_lbl = $HBoxContainer/Audio_Num_Lbl as Label
 @onready var h_slider = $HBoxContainer/HSlider as HSlider
