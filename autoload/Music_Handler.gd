@@ -58,6 +58,9 @@ func switch_to_main_theme_no_anim() -> void:
 	music_stream_player.stream = song_list[current_song]
 	music_stream_player.play()
 	
+func stop_battle_fade() -> void:
+	animation_player.stop()
+	
 func start_battle_fade() -> void:
 	animation_player.play("battle_fade")
 	

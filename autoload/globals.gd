@@ -10,6 +10,8 @@ We dont want the player to keep his progress.
 """
 signal level_changed
 signal xp_changed
+
+var pause : bool = false
 # Character States
 var tutorial : bool = true
 var dead : bool = false
@@ -60,7 +62,7 @@ func reset_globals() -> void:
 	player_aerial_walk_speed = 180.0
 	player_jump_velocity = 400.0
 	max_self_awareness_level = 100
-	max_global_progress_level = int(pow((max_level / 0.3), 2)) + 10
+	max_global_progress_level = calculate_xp(max_level)
 	self_awareness_modifier = -2.0 # Will be removed each process multiplied by delta
 	self_awareness_clothes_on_modifier = -1.0 # Will be removed each process multiplied by delta if he has clothes on
 	posing_self_awareness_modifier = 2.0
@@ -70,17 +72,21 @@ func reset_globals() -> void:
 	perfect_pose_time_window = 1.0
 	
 func get_self_awareness_modifier(is_clothed : bool, nearby_enemy_modifier : float) -> float:
+	var level_modifier = (float(level) / float(max_level))
 	if main_character_posing:
-		return posing_self_awareness_modifier + nearby_enemy_modifier
-	return self_awareness_clothes_on_modifier if is_clothed else self_awareness_modifier + nearby_enemy_modifier
+		return posing_self_awareness_modifier + nearby_enemy_modifier + (level_modifier * 2)
+	return self_awareness_clothes_on_modifier + level_modifier if is_clothed else self_awareness_modifier + nearby_enemy_modifier + level_modifier
 		
 func add_xp(value : int) -> void:
 	xp += value
 	while xp >= level_up_xp and level < max_level:
 		# formula from https://blog.jakelee.co.uk/converting-levels-into-xp-vice-versa/
 		level += 1
-		level_up_xp = int(pow((level / 0.3), 2)) + 10
+		level_up_xp = calculate_xp(level)
 		level_changed.emit(level)
 	xp_changed.emit(xp)
-		
-	
+
+func calculate_xp(level_needed : int) -> int:
+	if level_needed > max_level:
+		level_needed = max_level
+	return int(pow((level_needed / 0.3), 2)) + 10

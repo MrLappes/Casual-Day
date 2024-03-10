@@ -29,6 +29,7 @@ window/size/viewport_height=1080
 window/size/mode=4
 window/stretch/mode="viewport"
 window/stretch/aspect="keep_width"
+mouse_cursor/custom_image="res://sprites/mouse/bizeps_pointer_32.png"
 
 [editor]
 
