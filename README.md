@@ -19,6 +19,13 @@ This Game was created for the Acerola Game Jam 0
 - The enemies will pose with you after you won.
 - The girl is cool.
 
+# The Theme: Aberration
+- I believe i hit the theme of the contest by implementing unexpected gameplay.
+- Self Esteem bars instead of health bars.
+- Low Action Posing where you have to be patient instead of fast paced battles.
+- A crowd revealing themselves to the player the more self esteem he built up.
+- Maybe its not your typical "unwelcome" change but I think it should fit here.
+
 
 # Contribution
 - After the acerola game jam, feel free to contribute to this game in order to make it good.
