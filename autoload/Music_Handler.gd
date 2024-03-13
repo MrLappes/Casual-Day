@@ -8,6 +8,7 @@ It is autoloaded and can be called as "Audio"
 Corrupt.mp3 was created by me.
 The other songs were created by: https://de.fiverr.com/erekl3
 """
+signal battle_music_finished
 @onready var music_stream_player = $MusicStreamPlayer as AudioStreamPlayer
 @onready var animation_player = $AnimationPlayer as AnimationPlayer
 
@@ -27,7 +28,6 @@ func play_moosic(song_title : String) -> void:
 	song_title = get_correct_theme(song_title)
 	if current_song == song_title:
 		return
-	animation_player.stop()
 	music_stream_player.volume_db = 0
 	current_song = song_title
 	music_stream_player.stream = song_list[song_title]
@@ -55,8 +55,10 @@ func transition_state() -> void:
 func switch_to_main_theme_no_anim() -> void:
 	current_song = get_correct_theme("Main Theme")
 	Globals.in_battle = false
+	print(current_song)
 	music_stream_player.stream = song_list[current_song]
 	music_stream_player.play()
+	battle_music_finished.emit()
 	
 func stop_battle_fade() -> void:
 	animation_player.stop()

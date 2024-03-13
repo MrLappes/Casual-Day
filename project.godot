@@ -10,11 +10,14 @@ config_version=5
 
 [application]
 
-config/name="Flexarions Adventure"
+config/name="Casual Day"
+config/description="This is a wonderful game about you hating yourself but beating your insecurities by walking around half naked and doing posing battles against other people who become sad when they see how good you look compared to them."
+config/version="0.0.1"
 run/main_scene="res://Scenes/StartScreen.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
-boot_splash/image="res://sprites/player/bodypixl.png"
-config/icon="res://icon.svg"
+boot_splash/bg_color=Color(0.580392, 0.0431373, 0.356863, 1)
+boot_splash/image="res://sprites/logo.png"
+config/icon="res://sprites/logo.png"
 run/size/mode=0
 
 [autoload]
@@ -35,6 +38,12 @@ mouse_cursor/custom_image="res://sprites/mouse/bizeps_pointer_32.png"
 
 version_control/plugin_name="GitPlugin"
 version_control/autoload_on_startup=true
+
+[gui]
+
+theme/custom_font="res://sprites/joystix monospace.otf"
+theme/default_font_antialiasing=0
+theme/default_font_generate_mipmaps=true
 
 [input]
 

@@ -19,7 +19,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_nbpt4"]
 resource_name = "battle_fade"
-length = 22.0
+length = 11.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -27,7 +27,7 @@ tracks/0/path = NodePath("MusicStreamPlayer:volume_db")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 13.5, 20, 22),
+"times": PackedFloat32Array(0, 4.9, 10, 11),
 "transitions": PackedFloat32Array(1, 1, 8.28212, 0.287175),
 "update": 0,
 "values": [0.0, 0.0, -30.0, 0.0]
@@ -39,7 +39,7 @@ tracks/1/path = NodePath(".")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(20),
+"times": PackedFloat32Array(10.1),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],

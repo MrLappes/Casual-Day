@@ -53,11 +53,17 @@ text = "Quit"
 
 [node name="title" type="Label" parent="."]
 layout_mode = 1
-offset_right = 1240.0
-offset_bottom = 137.0
+offset_left = 39.0
+offset_top = 21.0
+offset_right = 1279.0
+offset_bottom = 158.0
+theme_override_colors/font_shadow_color = Color(0.792157, 0.180392, 0.611765, 1)
+theme_override_colors/font_outline_color = Color(0.792157, 0.180392, 0.611765, 1)
+theme_override_constants/shadow_offset_x = 7
+theme_override_constants/shadow_offset_y = 7
+theme_override_constants/outline_size = 4
 theme_override_font_sizes/font_size = 100
-text = "Boring shooter game?"
-horizontal_alignment = 1
+text = "Casual day"
 vertical_alignment = 1
 uppercase = true
 

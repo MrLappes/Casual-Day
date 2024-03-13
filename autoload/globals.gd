@@ -27,9 +27,9 @@ var sad : bool = true
 var level : int = 0
 var xp : int = 0
 var level_up_xp = 10
-var max_level : int = 69
-var player_walk_speed : float = 300.0
-var player_aerial_walk_speed : float = 180.0
+var max_level : int = 20
+var player_walk_speed : float = 200.0
+#var player_aerial_walk_speed : float = 180.0
 var player_jump_velocity : float = 400.0
 var max_self_awareness_level : float = 100.0
 var max_global_progress_level : float = 100.0
@@ -43,7 +43,7 @@ var perfect_pose_time_window : float = 1.0
 
 func reset_globals() -> void:
 	tutorial = true
-	
+	pause = false
 	# Character States
 	dead = false
 	main_character_posing = false
@@ -57,9 +57,9 @@ func reset_globals() -> void:
 	level = 0
 	xp = 0
 	level_up_xp = 10
-	max_level = 69
-	player_walk_speed = 300.0
-	player_aerial_walk_speed = 180.0
+	max_level = 20
+	player_walk_speed = 200.0
+#	player_aerial_walk_speed = 180.0
 	player_jump_velocity = 400.0
 	max_self_awareness_level = 100
 	max_global_progress_level = calculate_xp(max_level)
@@ -73,9 +73,17 @@ func reset_globals() -> void:
 	
 func get_self_awareness_modifier(is_clothed : bool, nearby_enemy_modifier : float) -> float:
 	var level_modifier = (float(level) / float(max_level))
+	var self_awareness
 	if main_character_posing:
-		return posing_self_awareness_modifier + nearby_enemy_modifier + (level_modifier * 2)
-	return self_awareness_clothes_on_modifier + level_modifier if is_clothed else self_awareness_modifier + nearby_enemy_modifier + level_modifier
+		self_awareness = posing_self_awareness_modifier + nearby_enemy_modifier + (level_modifier * 2)
+		if not sad:
+			self_awareness += 1.2
+	else:
+		self_awareness = self_awareness_clothes_on_modifier + level_modifier if is_clothed else self_awareness_modifier + nearby_enemy_modifier + level_modifier
+		if not sad:
+			self_awareness += 1.9
+	return self_awareness
+		
 		
 func add_xp(value : int) -> void:
 	xp += value
