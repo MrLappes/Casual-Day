@@ -19,7 +19,7 @@ offset_bottom = 40.0
 theme_override_constants/separation = 42
 
 [node name="Audio_Name_Lbl" type="Label" parent="HBoxContainer"]
-custom_minimum_size = Vector2(300, 0)
+custom_minimum_size = Vector2(420, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Master Volume"
@@ -28,7 +28,7 @@ text = "Master Volume"
 layout_mode = 2
 
 [node name="HSlider" type="HSlider" parent="HBoxContainer"]
-custom_minimum_size = Vector2(280, 32)
+custom_minimum_size = Vector2(400, 32)
 layout_mode = 2
 size_flags_vertical = 4
 max_value = 1.0

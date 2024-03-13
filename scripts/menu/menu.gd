@@ -30,7 +30,8 @@ var intro_finished : bool = false
 @onready var scroll_phone_timer = $scroll_phone_timer as Timer
 @onready var move_eyes_timer = $move_eyes_timer as Timer
 @onready var start_position : Vector2 = player.position
-
+@onready var audio_stream_player_2d = $AudioStreamPlayer2D as AudioStreamPlayer2D
+var hey_played : bool = false
 
 func _ready():
 	# Play global audio
@@ -42,7 +43,11 @@ func _ready():
 	
 func _process(delta):
 	# Walk in
+	
 	if player.position.distance_to(endposition.position) > 10:
+		if player.position.distance_to(endposition.position) < 200 and not hey_played:
+			hey_played = true
+			audio_stream_player_2d.play()
 		t += delta * 0.4
 		player.position = start_position.lerp(endposition.position, t)
 	elif not intro_finished:

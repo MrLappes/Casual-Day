@@ -20,10 +20,10 @@ grow_horizontal = 2
 grow_vertical = 2
 tabs_rearrange_group = 1
 
-[node name="Audio" type="TabBar" parent="TabContainer"]
+[node name="Settings" type="TabBar" parent="TabContainer"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Audio"]
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Settings"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -35,69 +35,34 @@ theme_override_constants/margin_top = 24
 theme_override_constants/margin_right = 24
 theme_override_constants/margin_bottom = 24
 
-[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Audio/MarginContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Settings/MarginContainer"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Audio/MarginContainer/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Settings/MarginContainer/ScrollContainer"]
 layout_mode = 2
 theme_override_constants/separation = 100
 alignment = 1
 
-[node name="Audio_Slider_Settings" parent="TabContainer/Audio/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_3uw6v")]
+[node name="Label2" type="Label" parent="TabContainer/Settings/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 35
+text = "Audio"
+
+[node name="Audio_Slider_Settings" parent="TabContainer/Settings/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_3uw6v")]
 layout_mode = 2
 
-[node name="Audio_Slider_Settings2" parent="TabContainer/Audio/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_3uw6v")]
+[node name="Audio_Slider_Settings2" parent="TabContainer/Settings/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_3uw6v")]
 layout_mode = 2
 bus_name = "Music"
 
-[node name="Audio_Slider_Settings3" parent="TabContainer/Audio/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_3uw6v")]
+[node name="Audio_Slider_Settings3" parent="TabContainer/Settings/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_3uw6v")]
 layout_mode = 2
 bus_name = "Sfx"
 
-[node name="Graphics" type="TabBar" parent="TabContainer"]
-visible = false
+[node name="Label" type="Label" parent="TabContainer/Settings/MarginContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 35
+text = "Graphics"
 
-[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Graphics"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 24
-theme_override_constants/margin_top = 24
-theme_override_constants/margin_right = 24
-theme_override_constants/margin_bottom = 24
-
-[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Graphics/MarginContainer"]
+[node name="Window_Mode_Button" parent="TabContainer/Settings/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_7cg3i")]
 layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Graphics/MarginContainer/ScrollContainer"]
-layout_mode = 2
-theme_override_constants/separation = 40
-alignment = 1
-
-[node name="Window_Mode_Button" parent="TabContainer/Graphics/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_7cg3i")]
-layout_mode = 2
-
-[node name="Controls" type="TabBar" parent="TabContainer"]
-visible = false
-layout_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Controls"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 24
-theme_override_constants/margin_top = 24
-theme_override_constants/margin_right = 24
-theme_override_constants/margin_bottom = 24
-
-[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Controls/MarginContainer"]
-layout_mode = 2
-theme_override_constants/separation = 40
-alignment = 1

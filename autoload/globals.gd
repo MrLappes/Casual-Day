@@ -22,6 +22,9 @@ var main_character_stripping : bool = false
 var block_main_character_posing : bool = false
 var in_battle : bool = false
 var sad : bool = true
+var oiled_up_modifier : float = 0.0
+var oiled_up : bool = false
+var is_clothed : bool = false # Only used for smooth transition to end cutscene
 
 # Stats of main Character
 var level : int = 0
@@ -42,6 +45,7 @@ var perfect_pose_time : float = 7.0
 var perfect_pose_time_window : float = 1.0
 
 func reset_globals() -> void:
+	
 	tutorial = true
 	pause = false
 	# Character States
@@ -52,6 +56,8 @@ func reset_globals() -> void:
 	block_main_character_posing = false
 	in_battle = false
 	sad = true
+	oiled_up_modifier = 0.0
+	oiled_up = false
 
 	# Stats of main Character
 	level = 0
@@ -63,7 +69,7 @@ func reset_globals() -> void:
 	player_jump_velocity = 400.0
 	max_self_awareness_level = 100
 	max_global_progress_level = calculate_xp(max_level)
-	self_awareness_modifier = -2.0 # Will be removed each process multiplied by delta
+	self_awareness_modifier = -1.7 # Will be removed each process multiplied by delta
 	self_awareness_clothes_on_modifier = -1.0 # Will be removed each process multiplied by delta if he has clothes on
 	posing_self_awareness_modifier = 2.0
 	self_awareness_timer = 3
@@ -73,16 +79,17 @@ func reset_globals() -> void:
 	
 func get_self_awareness_modifier(is_clothed : bool, nearby_enemy_modifier : float) -> float:
 	var level_modifier = (float(level) / float(max_level))
+	var oil_modifier = 0.0 if not oiled_up else oiled_up_modifier
 	var self_awareness
 	if main_character_posing:
 		self_awareness = posing_self_awareness_modifier + nearby_enemy_modifier + (level_modifier * 2)
 		if not sad:
-			self_awareness += 1.2
+			self_awareness += 0.8
 	else:
 		self_awareness = self_awareness_clothes_on_modifier + level_modifier if is_clothed else self_awareness_modifier + nearby_enemy_modifier + level_modifier
 		if not sad:
-			self_awareness += 1.9
-	return self_awareness
+			self_awareness += 1.7
+	return self_awareness + oil_modifier
 		
 		
 func add_xp(value : int) -> void:

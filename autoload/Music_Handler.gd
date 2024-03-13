@@ -55,7 +55,6 @@ func transition_state() -> void:
 func switch_to_main_theme_no_anim() -> void:
 	current_song = get_correct_theme("Main Theme")
 	Globals.in_battle = false
-	print(current_song)
 	music_stream_player.stream = song_list[current_song]
 	music_stream_player.play()
 	battle_music_finished.emit()
@@ -64,7 +63,8 @@ func stop_battle_fade() -> void:
 	animation_player.stop()
 	
 func start_battle_fade() -> void:
-	animation_player.play("battle_fade")
+	if current_song.begins_with("Battle Music"):
+		animation_player.play("battle_fade")
 	
 func stop_anim_player() -> void:
 	animation_player.stop()

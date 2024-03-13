@@ -1,20 +1,25 @@
-# <img src="./icon.png" style="height:1em;" /> Github To Itch (Godot 4.0)
-This addon automatically generates a github workflow to publish your game to your itch.io project. Great for use in jams so you can have your playable code live within a couple minutes of pushing to github.
+# <img src="./casual_day.png" style="height:1em;" /> Casual Day by MrLappes
+This Game was created for the Acerola Game Jam 0
 
-# Setup ⚙️
-1. When enabling the addon a window will popup with instructions on how to setup your `BUTLER_API_KEY` so you can actually push to itch.
-2. You'll also need to configure your Itch Username and Project Name in the popup window so butler will push to the correct account and project.
-3. Create an export preset in `Project > Export` if you don't have one and the addon will add it to your workflow.
-4. :tada: You're ready to go, whenever you push to your `main` branch this workflow will publish to itch.io
-    To edit the username, or project name go to `Project > Tools > Github to Itch Config` or in your project settings under `github_to_itch/config`
+# Disclaimer
+1. This is the First game i have ever finished to a somewhat playable state
+2. This is the First time voice acting / drawing pixel art (except for the 4 poses, Walking and Oiling of the player)
+	a. I drew the poses, walking and oiling for a game i never made 4 years ago.
+3. The music was created by a guy on fiverr and i have all rights on it. The music is not used only for this game.
+4. This is the first time using Godot.
+5. The code has gotten worse over time as I was struggling to keep up the pace.
 
-# How it works
-- When an export preset has `runnable=true` this will automatically adjust your github workflow to export and upload that to itch.io with the proper channel.
-- The workflow uses [Semantic Versioning](https://www.geeksforgeeks.org/introduction-semantic-versioning/) and [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) based on your commit messages to automatically handle version number updates.
-- The workflow also creates a release on your github repo, useful for keeping working copies of your exports.
+# Gameplay
+- You witness a girl being robbed and can choose between punching the robber or stripping.
+- Punching leads to you being shot.
+- Stripping leads to the game starting.
+- Health bars are based on self esteem and you win the game by beating other people in bodybuilding battles.
+- The Goal is to reach level 20. That is the max level and show that you have accepted your body.
+- The people around you slowly become visible as you level up and once they are revealed will motivate you.
+- The enemies will pose with you after you won.
+- The girl is cool.
 
-## Customization
-The workflow template file is found in `addons/github_to_itch/templates` You can modify that file to change the workflow if needed (maybe you want to change the branch to a `release` branch or something)
 
-## Suggestions :+1:
-If you have any ideas or suggestions for the addon please create an issue or fork the project and make a PR!
+# Contribution
+- After the acerola game jam, feel free to contribute to this game in order to make it good.
+- There were a lot of features I couldnt implement due to time constraints and left placeholders for.
