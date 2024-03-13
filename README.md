@@ -1,4 +1,4 @@
-# <img src="./casual_day.png" style="height:1em;" /> Casual Day by MrLappes
+# <img src="./sprites/logo.png" style="height:1em;" /> Casual Day by MrLappes
 This Game was created for the Acerola Game Jam 0
 
 # Disclaimer
