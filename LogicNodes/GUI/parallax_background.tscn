@@ -1,0 +1,133 @@
+[gd_scene load_steps=7 format=3 uid="uid://dqd7enmjfrig"]
+
+[ext_resource type="Texture2D" uid="uid://blv67s5ybxudy" path="res://sprites/map/sky.png" id="1_5sjfh"]
+[ext_resource type="Texture2D" uid="uid://ccdmc7qu0p3do" path="res://sprites/map/skyline-far.png" id="2_31ls8"]
+[ext_resource type="Texture2D" uid="uid://pmsc6vbuvh2m" path="res://sprites/map/skyline-close.png" id="3_dsxmk"]
+
+[sub_resource type="Gradient" id="Gradient_gx43p"]
+offsets = PackedFloat32Array(0.983553, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_0cxfb"]
+noise_type = 2
+frequency = 1.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_6qin3"]
+width = 1920
+height = 217
+color_ramp = SubResource("Gradient_gx43p")
+noise = SubResource("FastNoiseLite_0cxfb")
+
+[node name="ParallaxBackground" type="ParallaxBackground"]
+follow_viewport_enabled = true
+scroll_offset = Vector2(1, 0)
+scroll_base_offset = Vector2(-4000, 0)
+scroll_base_scale = Vector2(1, 0)
+scroll_ignore_camera_zoom = true
+
+[node name="moon" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(-0.98, 0)
+motion_mirroring = Vector2(6000, 0)
+
+[node name="Sprite2D2" type="Sprite2D" parent="moon"]
+position = Vector2(66, -20)
+scale = Vector2(3.15278, 3.15278)
+texture = SubResource("NoiseTexture2D_6qin3")
+
+[node name="Sprite2D" type="Sprite2D" parent="moon"]
+position = Vector2(104, -10)
+scale = Vector2(3.15278, 3.15278)
+texture = ExtResource("1_5sjfh")
+
+[node name="far back" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.01, 0)
+motion_offset = Vector2(10, 0)
+motion_mirroring = Vector2(2208, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="far back"]
+modulate = Color(0.831373, 0.831373, 0.831373, 1)
+position = Vector2(-274, -161)
+scale = Vector2(2.875, 2.875)
+texture = ExtResource("2_31ls8")
+centered = false
+
+[node name="Sprite2D2" type="Sprite2D" parent="far back"]
+modulate = Color(0.831373, 0.831373, 0.831373, 1)
+position = Vector2(463, -161)
+scale = Vector2(2.875, 2.875)
+texture = ExtResource("2_31ls8")
+centered = false
+
+[node name="Sprite2D3" type="Sprite2D" parent="far back"]
+modulate = Color(0.831373, 0.831373, 0.831373, 1)
+position = Vector2(1198, -161)
+scale = Vector2(2.875, 2.875)
+texture = ExtResource("2_31ls8")
+centered = false
+
+[node name="Sprite2D4" type="Sprite2D" parent="far back"]
+modulate = Color(0.831373, 0.831373, 0.831373, 1)
+position = Vector2(-2483, -161)
+scale = Vector2(2.875, 2.875)
+texture = ExtResource("2_31ls8")
+centered = false
+
+[node name="Sprite2D5" type="Sprite2D" parent="far back"]
+modulate = Color(0.831373, 0.831373, 0.831373, 1)
+position = Vector2(-1746, -161)
+scale = Vector2(2.875, 2.875)
+texture = ExtResource("2_31ls8")
+centered = false
+
+[node name="Sprite2D6" type="Sprite2D" parent="far back"]
+modulate = Color(0.831373, 0.831373, 0.831373, 1)
+position = Vector2(-1011, -161)
+scale = Vector2(2.875, 2.875)
+texture = ExtResource("2_31ls8")
+centered = false
+
+[node name="nearby" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.05, 0)
+motion_offset = Vector2(90, 0)
+motion_mirroring = Vector2(2484, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="nearby"]
+modulate = Color(0.639216, 0.568627, 0.596078, 1)
+position = Vector2(-331, -191)
+scale = Vector2(1.66406, 1.66406)
+texture = ExtResource("3_dsxmk")
+centered = false
+
+[node name="Sprite2D2" type="Sprite2D" parent="nearby"]
+modulate = Color(0.639216, 0.568627, 0.596078, 1)
+position = Vector2(494, -191)
+scale = Vector2(1.66406, 1.66406)
+texture = ExtResource("3_dsxmk")
+centered = false
+
+[node name="Sprite2D3" type="Sprite2D" parent="nearby"]
+modulate = Color(0.639216, 0.568627, 0.596078, 1)
+position = Vector2(1327, -191)
+scale = Vector2(1.66406, 1.66406)
+texture = ExtResource("3_dsxmk")
+centered = false
+
+[node name="Sprite2D4" type="Sprite2D" parent="nearby"]
+modulate = Color(0.639216, 0.568627, 0.596078, 1)
+position = Vector2(-2815, -191)
+scale = Vector2(1.66406, 1.66406)
+texture = ExtResource("3_dsxmk")
+centered = false
+
+[node name="Sprite2D5" type="Sprite2D" parent="nearby"]
+modulate = Color(0.639216, 0.568627, 0.596078, 1)
+position = Vector2(-1990, -191)
+scale = Vector2(1.66406, 1.66406)
+texture = ExtResource("3_dsxmk")
+centered = false
+
+[node name="Sprite2D6" type="Sprite2D" parent="nearby"]
+modulate = Color(0.639216, 0.568627, 0.596078, 1)
+position = Vector2(-1157, -191)
+scale = Vector2(1.66406, 1.66406)
+texture = ExtResource("3_dsxmk")
+centered = false

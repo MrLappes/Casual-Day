@@ -1,0 +1,102 @@
+[gd_scene load_steps=13 format=3 uid="uid://c68nwc1yxf1vc"]
+
+[ext_resource type="Shader" path="res://shaders/npc.gdshader" id="1_iumi5"]
+[ext_resource type="Script" path="res://scripts/npc/BasicNpc.gd" id="2_lu3rv"]
+[ext_resource type="Texture2D" uid="uid://ctrbekcane1hc" path="res://sprites/npcs/npcs.png" id="2_xa7s7"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yo3cy"]
+shader = ExtResource("1_iumi5")
+shader_parameter/darkening_factor = 0.0
+shader_parameter/hidden_color = Color(0.223529, 0.12549, 0.027451, 1)
+shader_parameter/skin_color = Color(0.435294, 0.309804, 0.133333, 1)
+shader_parameter/skin_shading_color = null
+shader_parameter/hair_color = null
+shader_parameter/hair_shading_color = null
+shader_parameter/clothes_color = null
+shader_parameter/clothes_shading_color = null
+shader_parameter/shoes_color = null
+shader_parameter/shoes_shading_color = null
+shader_parameter/pants_color = null
+shader_parameter/pants_shading_color = null
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rg7g2"]
+atlas = ExtResource("2_xa7s7")
+region = Rect2(0, 0, 70, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7u5d7"]
+atlas = ExtResource("2_xa7s7")
+region = Rect2(70, 0, 70, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_78n83"]
+atlas = ExtResource("2_xa7s7")
+region = Rect2(350, 0, 70, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k2eq3"]
+atlas = ExtResource("2_xa7s7")
+region = Rect2(420, 0, 70, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xtpp4"]
+atlas = ExtResource("2_xa7s7")
+region = Rect2(140, 0, 70, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xno1d"]
+atlas = ExtResource("2_xa7s7")
+region = Rect2(210, 0, 70, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_igq12"]
+atlas = ExtResource("2_xa7s7")
+region = Rect2(280, 0, 70, 70)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xi7u1"]
+animations = [{
+"frames": [{
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_rg7g2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7u5d7")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 0.5
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_78n83")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k2eq3")
+}],
+"loop": true,
+"name": &"party",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xtpp4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xno1d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_igq12")
+}],
+"loop": false,
+"name": &"random",
+"speed": 5.0
+}]
+
+[node name="BasicNpc" type="AnimatedSprite2D"]
+material = SubResource("ShaderMaterial_yo3cy")
+sprite_frames = SubResource("SpriteFrames_xi7u1")
+animation = &"random"
+autoplay = "idle"
+script = ExtResource("2_lu3rv")
+
+[node name="DoRandomThings" type="Timer" parent="."]
+
+[node name="Party_timer" type="Timer" parent="."]
+
+[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]
+[connection signal="timeout" from="DoRandomThings" to="." method="_on_do_random_things_timeout"]
+[connection signal="timeout" from="Party_timer" to="." method="_on_party_timer_timeout"]

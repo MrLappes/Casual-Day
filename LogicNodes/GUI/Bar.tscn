@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://dnvn21mfkkw4f"]
+
+[ext_resource type="Script" path="res://scripts/Bars.gd" id="1_wmcsb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f84sr"]
+bg_color = Color(0.756863, 0.407843, 1, 1)
+
+[node name="Bar" type="Control"]
+custom_minimum_size = Vector2(330, 30)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_wmcsb")
+
+[node name="Count" type="MarginContainer" parent="."]
+layout_mode = 1
+offset_right = 400.0
+offset_bottom = 27.0
+
+[node name="ProgressBar" type="ProgressBar" parent="Count"]
+custom_minimum_size = Vector2(200, 0)
+layout_direction = 2
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/background = SubResource("StyleBoxFlat_f84sr")
+value = 50.0
+
+[node name="Label" type="Label" parent="Count"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Aesthetics"

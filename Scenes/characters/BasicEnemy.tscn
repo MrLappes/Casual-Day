@@ -1,0 +1,183 @@
+[gd_scene load_steps=19 format=3 uid="uid://byndd1wpwfk2h"]
+
+[ext_resource type="Texture2D" uid="uid://nxx0r0xtjhhx" path="res://sprites/robber.png" id="1_qjpqr"]
+[ext_resource type="Script" path="res://scripts/npc/BasicEnemy.gd" id="2_0sxgr"]
+[ext_resource type="PackedScene" uid="uid://dyn8a0w4ck2od" path="res://LogicNodes/GUI/EnemyBar.tscn" id="3_rughm"]
+[ext_resource type="Script" path="res://scripts/npc/HintLabel.gd" id="4_j4gii"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bvh3s"]
+atlas = ExtResource("1_qjpqr")
+region = Rect2(420, 0, 70, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ewxb"]
+atlas = ExtResource("1_qjpqr")
+region = Rect2(490, 0, 70, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qiulg"]
+atlas = ExtResource("1_qjpqr")
+region = Rect2(0, 0, 70, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eg68e"]
+atlas = ExtResource("1_qjpqr")
+region = Rect2(70, 0, 70, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_se1pn"]
+atlas = ExtResource("1_qjpqr")
+region = Rect2(140, 0, 70, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ky33m"]
+atlas = ExtResource("1_qjpqr")
+region = Rect2(210, 0, 70, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s5fma"]
+atlas = ExtResource("1_qjpqr")
+region = Rect2(280, 0, 70, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8bdwy"]
+atlas = ExtResource("1_qjpqr")
+region = Rect2(350, 0, 70, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oft76"]
+atlas = ExtResource("1_qjpqr")
+region = Rect2(420, 0, 70, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0cgch"]
+atlas = ExtResource("1_qjpqr")
+region = Rect2(420, 0, 70, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rb78i"]
+atlas = ExtResource("1_qjpqr")
+region = Rect2(490, 0, 70, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2p5ir"]
+atlas = ExtResource("1_qjpqr")
+region = Rect2(560, 0, 70, 70)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_br2y5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bvh3s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ewxb")
+}],
+"loop": false,
+"name": &"move_eyes",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qiulg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eg68e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_se1pn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ky33m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s5fma")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8bdwy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oft76")
+}],
+"loop": false,
+"name": &"rob",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0cgch")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rb78i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2p5ir")
+}],
+"loop": false,
+"name": &"shoot",
+"speed": 2.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7wtgr"]
+size = Vector2(219.549, 261.654)
+
+[node name="BasicEnemy" type="AnimatedSprite2D"]
+scale = Vector2(0.665, 0.665)
+sprite_frames = SubResource("SpriteFrames_br2y5")
+animation = &"shoot"
+autoplay = "rob"
+script = ExtResource("2_0sxgr")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_7wtgr")
+
+[node name="SelfEsteemBar" parent="." instance=ExtResource("3_rughm")]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -56.0526
+offset_top = -43.609
+offset_right = 143.947
+offset_bottom = -13.609
+grow_horizontal = 2
+scale = Vector2(0.215, 0.215)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+max_color = Color(1, 0, 0.282353, 1)
+min_color = Color(0.207843, 0, 0, 1)
+
+[node name="HintLabel" type="Label" parent="SelfEsteemBar"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -310.0
+offset_top = -112.0
+offset_right = 306.0
+offset_bottom = -5.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.996078, 0.878431, 0.913725, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 22
+text = "Damn those Back Muscles are amazing"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("4_j4gii")
+
+[node name="InsultTimer" type="Timer" parent="SelfEsteemBar/HintLabel"]
+wait_time = 4.0
+one_shot = true
+
+[node name="LevelLabel" type="Label" parent="SelfEsteemBar"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -162.947
+offset_top = -188.844
+offset_right = -87.9473
+offset_bottom = -165.844
+grow_horizontal = 2
+scale = Vector2(4.35723, 4.35723)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="timeout" from="SelfEsteemBar/HintLabel/InsultTimer" to="SelfEsteemBar/HintLabel" method="_on_insult_timer_timeout"]

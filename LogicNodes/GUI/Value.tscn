@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3 uid="uid://c6d6xmyj2p7va"]
+
+[ext_resource type="Script" path="res://scripts/ValueLabel.gd" id="1_ax732"]
+
+[node name="ValueLabel" type="Control"]
+custom_minimum_size = Vector2(330, 30)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_ax732")
+
+[node name="Count" type="MarginContainer" parent="."]
+layout_mode = 1
+offset_right = 329.0
+offset_bottom = 27.0
+
+[node name="ProgressText" type="Label" parent="Count"]
+custom_minimum_size = Vector2(200, 0)
+layout_direction = 2
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="Label" type="Label" parent="Count"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Level"

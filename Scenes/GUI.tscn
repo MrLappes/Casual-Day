@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=3 uid="uid://bnvbompcixag6"]
+
+[ext_resource type="Script" path="res://scripts/GUI.gd" id="1_3ym3t"]
+[ext_resource type="PackedScene" uid="uid://dnvn21mfkkw4f" path="res://LogicNodes/GUI/Bar.tscn" id="1_vbmun"]
+[ext_resource type="PackedScene" uid="uid://c6d6xmyj2p7va" path="res://LogicNodes/GUI/Value.tscn" id="3_khw8n"]
+[ext_resource type="PackedScene" uid="uid://dx5vh6ljdpusl" path="res://LogicNodes/GUI/LevelUpBar.tscn" id="4_45l8f"]
+
+[node name="Gui" type="Container"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3ym3t")
+global_progress_end_color = Color(1, 0.717647, 0.960784, 1)
+self_awareness_end_color = Color(0.588235, 0.87451, 1, 1)
+
+[node name="Panel" type="Panel" parent="."]
+modulate = Color(0.388235, 0.164706, 0.12549, 1)
+custom_minimum_size = Vector2(412.255, 120.07)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="Bars" type="VBoxContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(330, 40)
+layout_mode = 2
+
+[node name="GlobalProgress" parent="HBoxContainer/Bars" instance=ExtResource("1_vbmun")]
+layout_mode = 2
+label_text = "World Progress"
+
+[node name="SelfAwareness" parent="HBoxContainer/Bars" instance=ExtResource("1_vbmun")]
+layout_mode = 2
+label_text = "Self Esteem"
+
+[node name="Level" parent="HBoxContainer/Bars" instance=ExtResource("3_khw8n")]
+layout_mode = 2
+
+[node name="LevelUpBar" parent="HBoxContainer/Bars/Level" instance=ExtResource("4_45l8f")]
+offset_left = 42.0
+offset_top = 27.0
+offset_right = 372.0
+offset_bottom = 57.0
+scale = Vector2(0.405, 0.405)

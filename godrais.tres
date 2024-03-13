@@ -1,0 +1,19 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://nftcc0dkkyjf"]
+
+[ext_resource type="Shader" path="res://shaders/godrays.gdshader" id="1_oko0u"]
+
+[resource]
+shader = ExtResource("1_oko0u")
+shader_parameter/angle = 0.315
+shader_parameter/position = 0.205
+shader_parameter/spread = 0.058
+shader_parameter/cutoff = 1.0
+shader_parameter/falloff = 1.0
+shader_parameter/edge_fade = 1.0
+shader_parameter/speed = 1.56
+shader_parameter/ray1_density = 1.0
+shader_parameter/ray2_density = 1.0
+shader_parameter/ray2_intensity = 0.599
+shader_parameter/color = Color(0.952941, 0.890196, 0.909804, 0.8)
+shader_parameter/hdr = true
+shader_parameter/seed = 5.0

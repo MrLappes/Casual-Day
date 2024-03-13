@@ -1,0 +1,75 @@
+[gd_scene load_steps=8 format=3 uid="uid://bpxqdlg35wyk6"]
+
+[ext_resource type="Texture2D" uid="uid://cfgn8rduxuh2x" path="res://sprites/effects/particles/footstep_dust.png" id="1_w7bcx"]
+
+[sub_resource type="Curve" id="Curve_ifs44"]
+min_value = 1.0
+max_value = 5.0
+_data = [Vector2(0, 1.26374), 0.0, 0.0, 0, 0, Vector2(0.25, 1.61538), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_f8ynj"]
+curve = SubResource("Curve_ifs44")
+
+[sub_resource type="Curve" id="Curve_lstuq"]
+max_value = 0.5
+_data = [Vector2(0, 0.373626), 0.0, 0.386813, 0, 0, Vector2(0.340278, 0.516483), 0.0, 0.0, 0, 0, Vector2(1, 0.21978), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_emteo"]
+curve = SubResource("Curve_lstuq")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_l4cqk"]
+lifetime_randomness = 0.03
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+angle_min = 39.8
+angle_max = 347.4
+inherit_velocity_ratio = 0.128
+direction = Vector3(0, 0, 0)
+flatness = 0.07
+initial_velocity_min = 2.0
+initial_velocity_max = 5.0
+angular_velocity_min = 1.0
+angular_velocity_max = 3.0
+angular_velocity_curve = SubResource("CurveTexture_f8ynj")
+gravity = Vector3(0, -1, 0)
+scale_min = 0.2
+scale_max = 0.5
+scale_curve = SubResource("CurveTexture_emteo")
+scale_over_velocity_min = 11.63
+scale_over_velocity_max = 93.03
+hue_variation_max = 1.0
+turbulence_enabled = true
+turbulence_noise_strength = 0.13
+turbulence_noise_scale = 1.3
+turbulence_noise_speed_random = 0.07
+turbulence_influence_min = 0.0
+turbulence_influence_max = 0.035
+collision_use_scale = true
+
+[sub_resource type="GDScript" id="GDScript_iuof1"]
+script/source = "extends GPUParticles2D
+
+\"\"\"
+Taken from https://www.youtube.com/watch?v=AyOpeZIAu3Y
+\"\"\"
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	await get_tree().create_timer(2).timeout
+	queue_free()
+"
+
+[node name="Footsteps" type="GPUParticles2D"]
+scale = Vector2(3, 3)
+emitting = false
+amount = 3
+process_material = SubResource("ParticleProcessMaterial_l4cqk")
+texture = ExtResource("1_w7bcx")
+lifetime = 2.0
+one_shot = true
+speed_scale = 2.0
+explosiveness = 1.0
+local_coords = true
+script = SubResource("GDScript_iuof1")

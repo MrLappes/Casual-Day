@@ -1,0 +1,187 @@
+[gd_scene load_steps=22 format=3 uid="uid://bi1dlhaa7o4i2"]
+
+[ext_resource type="Texture2D" uid="uid://cubeecmrfkpww" path="res://sprites/enemies/BasicPosingEnemy2.png" id="1_1o6kd"]
+[ext_resource type="Shader" path="res://shaders/basic_enemy.gdshader" id="1_5w71h"]
+[ext_resource type="Script" path="res://scripts/npc/BasicPosingEnemy.gd" id="2_tiiap"]
+[ext_resource type="PackedScene" uid="uid://dyn8a0w4ck2od" path="res://LogicNodes/GUI/EnemyBar.tscn" id="3_jjo4j"]
+[ext_resource type="Script" path="res://scripts/npc/HintLabel.gd" id="4_4yq7u"]
+[ext_resource type="Script" path="res://scripts/npc/SusSoundsPlayer.gd" id="6_rmih4"]
+[ext_resource type="AudioStream" uid="uid://c2oq0nb8o5vum" path="res://sfx/peinlich.wav" id="6_tybea"]
+[ext_resource type="AudioStream" uid="uid://2ia7a42acxh5" path="res://sfx/damn.wav" id="7_vothb"]
+[ext_resource type="AudioStream" uid="uid://c4jij4igjxm58" path="res://sfx/big_guy.wav" id="8_geaim"]
+[ext_resource type="AudioStream" uid="uid://bai2aeimw5osk" path="res://sfx/lot2learn.wav" id="9_sxfdx"]
+[ext_resource type="AudioStream" uid="uid://dey1xf4i88cbo" path="res://sfx/firsttime.wav" id="10_lmact"]
+[ext_resource type="AudioStream" uid="uid://bayeodf6hhb8m" path="res://sfx/coughcough.wav" id="11_aibnw"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lm1if"]
+shader = ExtResource("1_5w71h")
+shader_parameter/skin_color = null
+shader_parameter/skin_shading_color = null
+shader_parameter/hair_color = null
+shader_parameter/hair_shading_color = null
+shader_parameter/clothes_color = null
+shader_parameter/clothes_shading_color = null
+shader_parameter/shoes_color = null
+shader_parameter/shoes_shading_color = null
+shader_parameter/pants_color = null
+shader_parameter/pants_shading_color = null
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_blyj3"]
+atlas = ExtResource("1_1o6kd")
+region = Rect2(0, 140, 70, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6omwh"]
+atlas = ExtResource("1_1o6kd")
+region = Rect2(70, 140, 70, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_272a4"]
+atlas = ExtResource("1_1o6kd")
+region = Rect2(0, 0, 70, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ni08"]
+atlas = ExtResource("1_1o6kd")
+region = Rect2(70, 0, 70, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wq77d"]
+atlas = ExtResource("1_1o6kd")
+region = Rect2(0, 70, 70, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qiavd"]
+atlas = ExtResource("1_1o6kd")
+region = Rect2(70, 70, 70, 70)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_br2y5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_blyj3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6omwh")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_272a4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ni08")
+}],
+"loop": true,
+"name": &"pose1",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wq77d")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_qiavd")
+}],
+"loop": true,
+"name": &"pose2",
+"speed": 1.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7wtgr"]
+size = Vector2(219.549, 261.654)
+
+[node name="BasicPosingEnemy" type="AnimatedSprite2D"]
+material = SubResource("ShaderMaterial_lm1if")
+scale = Vector2(0.665, 0.665)
+sprite_frames = SubResource("SpriteFrames_br2y5")
+animation = &"pose2"
+autoplay = "Idle"
+script = ExtResource("2_tiiap")
+color_shader = true
+level = 2
+weakness = "MostMuscular"
+max_self_esteem = 200
+self_esteem_regen = 3.0
+base_win_xp = 16
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_7wtgr")
+
+[node name="RandomPoseTimer" type="Timer" parent="."]
+
+[node name="PerfectPoseTimer" type="Timer" parent="."]
+wait_time = 7.0
+one_shot = true
+
+[node name="SelfEsteemBar" parent="." instance=ExtResource("3_jjo4j")]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -56.0526
+offset_top = -43.609
+offset_right = 143.947
+offset_bottom = -13.609
+grow_horizontal = 2
+scale = Vector2(0.215, 0.215)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+max_color = Color(1, 0, 0.282353, 1)
+min_color = Color(0.207843, 0, 0, 1)
+
+[node name="HintLabel" type="Label" parent="SelfEsteemBar"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -317.0
+offset_top = -112.0
+offset_right = 313.0
+offset_bottom = -5.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.996078, 0.878431, 0.913725, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 25
+text = "Damn those Back Muscles are amazing"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("4_4yq7u")
+
+[node name="InsultTimer" type="Timer" parent="SelfEsteemBar/HintLabel"]
+wait_time = 4.0
+one_shot = true
+
+[node name="LevelLabel" type="Label" parent="SelfEsteemBar"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -162.947
+offset_top = -188.844
+offset_right = -87.9473
+offset_bottom = -165.844
+grow_horizontal = 2
+scale = Vector2(4.35723, 4.35723)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SusSoundsPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_tybea")
+volume_db = 23.0
+max_distance = 100.0
+attenuation = 0.466517
+bus = &"Sfx"
+script = ExtResource("6_rmih4")
+good_audio = Array[AudioStream]([ExtResource("7_vothb"), ExtResource("8_geaim")])
+suck_audio = Array[AudioStream]([ExtResource("9_sxfdx"), ExtResource("10_lmact"), ExtResource("11_aibnw")])
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="timeout" from="RandomPoseTimer" to="." method="_on_random_pose_timer_timeout"]
+[connection signal="timeout" from="PerfectPoseTimer" to="." method="_on_perfect_pose_timer_timeout"]
+[connection signal="timeout" from="SelfEsteemBar/HintLabel/InsultTimer" to="SelfEsteemBar/HintLabel" method="_on_insult_timer_timeout"]

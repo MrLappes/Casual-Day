@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=3 uid="uid://bgxet5fdkfc7c"]
+
+[ext_resource type="Script" path="res://scripts/OilFlask.gd" id="1_6dy8e"]
+[ext_resource type="Texture2D" uid="uid://csih21ny4ntv" path="res://sprites/oil_flask.png" id="1_pgr56"]
+[ext_resource type="PackedScene" uid="uid://1py6gwice3jv" path="res://Scenes/oil_particles.tscn" id="3_iwa6y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hp45r"]
+size = Vector2(36.8488, 48.8151)
+
+[node name="OilFlask" type="Sprite2D"]
+scale = Vector2(3.935, 3.935)
+texture = ExtResource("1_pgr56")
+script = ExtResource("1_6dy8e")
+
+[node name="PickupLabel" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -9.57433
+offset_top = -20.8386
+offset_right = 30.4257
+offset_bottom = 27.1614
+grow_horizontal = 2
+scale = Vector2(0.245, 0.245)
+theme_override_colors/font_shadow_color = Color(0.301961, 0.458824, 0.156863, 1)
+theme_override_colors/font_outline_color = Color(0.6, 0.898039, 0.313726, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 1
+theme_override_font_sizes/font_size = 40
+text = "Q"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="OilParticles" parent="." instance=ExtResource("3_iwa6y")]
+
+[node name="CollectableRange" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectableRange"]
+position = Vector2(-1.90597, -17.2697)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_hp45r")
+
+[connection signal="body_entered" from="CollectableRange" to="." method="_on_collectable_range_body_entered"]
+[connection signal="body_exited" from="CollectableRange" to="." method="_on_collectable_range_body_exited"]

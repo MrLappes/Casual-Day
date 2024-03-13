@@ -1,0 +1,32 @@
+[gd_scene load_steps=2 format=3 uid="uid://dx5vh6ljdpusl"]
+
+[ext_resource type="Script" path="res://scripts/LevelUpBar.gd" id="1_ira3d"]
+
+[node name="Bar" type="Control"]
+custom_minimum_size = Vector2(432.18, 30)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_ira3d")
+label_text = "0 / 10"
+
+[node name="Count" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(430.615, 0)
+layout_mode = 1
+offset_right = 329.0
+offset_bottom = 27.0
+
+[node name="ProgressBar" type="ProgressBar" parent="Count"]
+custom_minimum_size = Vector2(200, 0)
+layout_direction = 2
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 1
+value = 50.0
+
+[node name="Label" type="Label" parent="Count"]
+custom_minimum_size = Vector2(201.985, 31.4)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 24
+text = "Aesthetics"
+clip_text = true

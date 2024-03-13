@@ -1,0 +1,216 @@
+[gd_scene load_steps=24 format=3 uid="uid://17ygytn0kv7a"]
+
+[ext_resource type="Shader" path="res://shaders/unfocus.gdshader" id="1_rq43g"]
+[ext_resource type="Texture2D" uid="uid://dt1rk1nyqskve" path="res://sprites/girl.png" id="2_tik0y"]
+[ext_resource type="Script" path="res://scripts/npc/girl.gd" id="3_yebrl"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u4lew"]
+shader = ExtResource("1_rq43g")
+shader_parameter/darkening_factor = 0.0
+shader_parameter/hidden_color = null
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_17sip"]
+atlas = ExtResource("2_tik0y")
+region = Rect2(0, 70, 70, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y2n62"]
+atlas = ExtResource("2_tik0y")
+region = Rect2(70, 70, 70, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bebpm"]
+atlas = ExtResource("2_tik0y")
+region = Rect2(140, 70, 70, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5rc55"]
+atlas = ExtResource("2_tik0y")
+region = Rect2(210, 70, 70, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5p17k"]
+atlas = ExtResource("2_tik0y")
+region = Rect2(0, 0, 70, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iw3eq"]
+atlas = ExtResource("2_tik0y")
+region = Rect2(70, 0, 70, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x7ekn"]
+atlas = ExtResource("2_tik0y")
+region = Rect2(140, 0, 70, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_logps"]
+atlas = ExtResource("2_tik0y")
+region = Rect2(210, 0, 70, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1xchj"]
+atlas = ExtResource("2_tik0y")
+region = Rect2(0, 140, 70, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rt2ij"]
+atlas = ExtResource("2_tik0y")
+region = Rect2(70, 140, 70, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_asash"]
+atlas = ExtResource("2_tik0y")
+region = Rect2(140, 140, 70, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4vx5x"]
+atlas = ExtResource("2_tik0y")
+region = Rect2(210, 140, 70, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tv1x6"]
+atlas = ExtResource("2_tik0y")
+region = Rect2(0, 0, 70, 70)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1qgrx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_17sip")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y2n62")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bebpm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5rc55")
+}],
+"loop": false,
+"name": &"give_phone",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5p17k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iw3eq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x7ekn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_logps")
+}],
+"loop": false,
+"name": &"scroll",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1xchj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rt2ij")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_asash")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4vx5x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tv1x6")
+}],
+"loop": false,
+"name": &"take_picture",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_twf7w"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/darkening_factor")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_2pmsi"]
+resource_name = "hide_girl"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/darkening_factor")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_ivcn6"]
+resource_name = "show_girl"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/darkening_factor")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5y5gi"]
+_data = {
+"RESET": SubResource("Animation_twf7w"),
+"hide_girl": SubResource("Animation_2pmsi"),
+"show_girl": SubResource("Animation_ivcn6")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p8h2p"]
+size = Vector2(150, 148.571)
+
+[node name="girl" type="AnimatedSprite2D"]
+material = SubResource("ShaderMaterial_u4lew")
+scale = Vector2(0.7, 0.7)
+sprite_frames = SubResource("SpriteFrames_1qgrx")
+animation = &"take_picture"
+script = ExtResource("3_yebrl")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_5y5gi")
+}
+
+[node name="ScrollPhoneTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="ThankYouLabel" type="Label" parent="."]
+offset_left = -157.143
+offset_top = -42.8571
+offset_right = 2842.86
+offset_bottom = 457.143
+scale = Vector2(0.05, 0.05)
+theme_override_colors/font_shadow_color = Color(0.709804, 0.145098, 0.498039, 1)
+theme_override_colors/font_outline_color = Color(0.627451, 0.247059, 0.309804, 1)
+theme_override_constants/shadow_offset_x = 10
+theme_override_constants/shadow_offset_y = 10
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 100
+text = "Thank you for retrieving my purse"
+autowrap_mode = 3
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.714279, -2.85714)
+shape = SubResource("RectangleShape2D_p8h2p")
+
+[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]
+[connection signal="timeout" from="ScrollPhoneTimer" to="." method="_on_scroll_phone_timer_timeout"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
